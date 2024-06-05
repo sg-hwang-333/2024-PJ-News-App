@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import NewsItem from './NewsItem'
 // 뉴스 데이터 가져오기
 import data from '../news.json'
+import '../styles/global.css'
+import newsAppStyle from '../styles/NewsApp.module.css'
 
 const NewsApp = function(props) {
     const [articles, setArticles] = useState([])
@@ -22,9 +24,9 @@ const NewsApp = function(props) {
     if(loading) return <h1>뉴스 기사를 불러오는 중입니다.</h1>
 
     return (
-        <div id="news-app">
+        <div className={newsAppStyle.news_app}>
             {
-                articles.length === 0 ? <h1>표시할 뉴스가 없습니다.</h1>
+                articles.length === 0 ? <h1>불러올 뉴스가 없습니다.</h1>
                     :
                     <ul>
                         {
