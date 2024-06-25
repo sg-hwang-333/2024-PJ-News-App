@@ -5,7 +5,7 @@ import data from '../news.json'
 import '../styles/global.css'
 import newsAppStyle from '../styles/NewsApp.module.css'
 
-const NewsApp = function(props) {
+const NewsApp = function (props) {
     const [articles, setArticles] = useState([])
     // 로딩 상태 조정
     const [loading, setLoading] = useState(false)
@@ -21,7 +21,17 @@ const NewsApp = function(props) {
         })
     }, [])
 
-    if(loading) return <h1>뉴스 기사를 불러오는 중입니다.</h1>
+    // API로 요청 보내는 코드 추가
+    useEffect(() => {
+        // 주소 수정
+        fetch("/api/users")
+            .then(res => res.json())
+            .then(json => {
+                console.log(json)
+            })
+    }, [])
+
+    if (loading) return <h1>뉴스 기사를 불러오는 중입니다.</h1>
 
     return (
         <div className={newsAppStyle.news_app}>
